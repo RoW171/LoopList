@@ -38,9 +38,6 @@ class LoopList(list):
         if not self._iterationLooped: return super().__iter__()
         else: return LoopListIterator(self)
 
-    # def __delslice__(self, i, j):
-    #     super().__delslice__(i % len(self), j % len(self))
-
     def pop(self, index=None):
         return super().pop(index % len(self))
 
@@ -71,13 +68,6 @@ class LoopListIterator(Iterator):
     def __next__(self):
         self._counter += 1
         return self._source[self._counter]
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
