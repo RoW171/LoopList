@@ -49,7 +49,7 @@ class LoopList(list):
     def index(self, item, iteration=0, start=None, end=None):
         """
         :param iteration:
-        :param item:
+        :param item: item within the list
         :type iteration: int
         :type start: int
         :type end: int
