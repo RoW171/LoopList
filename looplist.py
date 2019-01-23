@@ -127,26 +127,24 @@ class LoopList(list):
         super().insert(index % len(self), item)
 
 
-    def index(self, item, iteration=0, start=None, end=None):
+    def index(self, item, iteration=0):
+        # FIXME: add 'start' and 'end' parameters
         """
+        Nobody will need this that way but just for completion:
         Seeks the index of 'item' in the list and simulates a given number of iterations on it
         Example:
             ll = LoopList([1, 2, 3, ])
             ll.index(2)  --> returns 1
             ll.index(2, 5)
         Same behaviour(except iteration) as list.index() builtin method. Consult its docs for details
+        Just in case you're wondering why the 'start' and 'end' parameters are missing: Implementing them resulted in
+        a IndexError possibly caused by some internal builtin process; this feature may be available in the future
         :param item: item within the list
         :param iteration:
         :type iteration: int
-        :type start: int
-        :type end: int
         :return: index of 'item' in the list
         """
-        # FIXME: currently doesn't work [TypeError: slice indices must be integers or None or have an __index__ method]
-        raise NotImplementedError('This method behaves unexpectedly and is currently under rework')
-        # noinspection PyUnreachableCode
-        # return super().index(item, start % len(self), end % len(self)) + (len(self) * iteration)
-        return super().index(item, start, end) + (len(self) * iteration)
+        return super().index(item) + (len(self) * iteration)
 
     def copy(self, returnType=list):
         """
